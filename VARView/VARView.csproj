@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	<OutputType>WinExe</OutputType>
+	<TargetFramework>net8.0-windows</TargetFramework>
+	<Nullable>enable</Nullable>
+	<ImplicitUsings>enable</ImplicitUsings>
+	<UseWPF>true</UseWPF>
+	<ApplicationIcon>magnifying-glass-dollar-solid.ico</ApplicationIcon>
+	<PublishSingleFile>true</PublishSingleFile>
+	<Platforms>AnyCPU;x64</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+	<Content Include="magnifying-glass-dollar-solid.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+	<PackageReference Include="MahApps.Metro" Version="2.4.10" />
+	<PackageReference Include="MahApps.Metro.IconPacks.FontAwesome" Version="5.0.1" />
+	<PackageReference Include="System.Text.Json" Version="8.0.5" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,174 @@
+﻿<mah:MetroWindow x:Class="VARView.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vvc="clr-namespace:VARView.Controls"
+        xmlns:local="clr-namespace:VARView"
+        mc:Ignorable="d"
+        Title="VAR View" MinHeight="1050" MinWidth="1000" Height="1050" Width="1000">
+    <mah:MetroWindow.LeftWindowCommands>
+        <mah:WindowCommands>
+            <Button ToolTip="VAR Sheet Viewer">
+                <iconPacks:PackIconFontAwesome Width="22"
+                                  Height="22"
+                                  Kind="MagnifyingGlassDollarSolid" />
+            </Button>
+        </mah:WindowCommands>
+    </mah:MetroWindow.LeftWindowCommands>
+
+    <mah:MetroWindow.RightWindowCommands>
+        <mah:WindowCommands>
+            <Button Content="Help" Click="OpenHelp">
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <iconPacks:PackIconFontAwesome Width="22"
+                                        Height="22"
+                                        VerticalAlignment="Center"
+                                        Kind="CircleQuestionSolid" />
+                            <TextBlock Margin="4 0 0 0"
+                         VerticalAlignment="Center"
+                         Text="{Binding}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+        </mah:WindowCommands>
+    </mah:MetroWindow.RightWindowCommands>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="325" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <GroupBox Grid.Column="0" Header="VAR Fields">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button x:Name="LoadVAR" Click="LoadVAR_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Open VAR" VerticalAlignment="Center" VerticalContentAlignment="Center" Padding="0,0,5,0"  />
+                            <iconPacks:PackIconFontAwesome Kind="DownloadSolid" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="ClearVAR" IsEnabled="False" Click="ClearVAR_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Clear VAR" VerticalAlignment="Center" VerticalContentAlignment="Center" Padding="0,0,5,0"  />
+                            <iconPacks:PackIconFontAwesome Kind="TrashCanSolid" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+                <StackPanel Grid.Row="1">
+                    <vvc:VARTextBox x:Name="VARV" Label="V Number" Watermark="V0000000" TabIndex="101"/>
+                    <vvc:VARTextBox x:Name="VARMerchantName" Label="Merchant Name" Watermark="Merchant Name" TabIndex="102"/>
+                    <vvc:VARTextBox x:Name="VARMerchantNumber" Label="Merchant Number" Watermark="000000000000" TabIndex="103"/>
+                    <vvc:VARTextBox x:Name="VARBin" Label="Bin" Watermark="000000" TabIndex="104"/>
+                    <vvc:VARTextBox x:Name="VARAgent" Label="Agent" Watermark="000000" TabIndex="105"/>
+                    <vvc:VARTextBox x:Name="VARChain" Label="Chain" Watermark="0000" TabIndex="106"/>
+                    <vvc:VARTextBox x:Name="VARStoreNumber" Label="Store Number" Watermark="0000" TabIndex="107"/>
+                    <vvc:VARTextBox x:Name="VARTerminalNumber" Label="Terminal Number" Watermark="0000" TabIndex="108"/>
+                    <vvc:VARTextBox x:Name="VARMCC" Label="Visa MCC" Watermark="0000" TabIndex="109"/>
+                    <vvc:VARTextBox x:Name="VARAddress" Label="Address" Watermark="Address" TabIndex="110"/>
+                    <vvc:VARTextBox x:Name="VARCity" Label="City" Watermark="City" TabIndex="111"/>
+                    <!--<vvc:VARComboBox x:Name="VARState" Label="State" Watermark="State" ItemsSource="{Binding states}" TabIndex="112"/>-->
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Label Content="State" HorizontalAlignment="Right" />
+                        <ComboBox x:Name="VARState" SelectedValuePath="Content" mah:TextBoxHelper.Watermark="State" TabIndex="112" Width="150">
+                            <ComboBoxItem Content="AL" Tag="AL" />
+                            <ComboBoxItem Content="AK" Tag="AK" />
+                            <ComboBoxItem Content="AR" Tag="AR" />
+                            <ComboBoxItem Content="AZ" Tag="AZ" />
+                            <ComboBoxItem Content="CA" Tag="CA" />
+                            <ComboBoxItem Content="CO" Tag="CO" />
+                            <ComboBoxItem Content="CT" Tag="CT" />
+                            <ComboBoxItem Content="DE" Tag="DE" />
+                            <ComboBoxItem Content="FL" Tag="FL" />
+                            <ComboBoxItem Content="GA" Tag="GA" />
+                            <ComboBoxItem Content="HI" Tag="HI" />
+                            <ComboBoxItem Content="ID" Tag="ID" />
+                            <ComboBoxItem Content="IL" Tag="IL" />
+                            <ComboBoxItem Content="IN" Tag="IN" />
+                            <ComboBoxItem Content="IA" Tag="IA" />
+                            <ComboBoxItem Content="KS" Tag="KS" />
+                            <ComboBoxItem Content="KY" Tag="KY" />
+                            <ComboBoxItem Content="LA" Tag="LA" />
+                            <ComboBoxItem Content="ME" Tag="ME" />
+                            <ComboBoxItem Content="MD" Tag="MD" />
+                            <ComboBoxItem Content="MA" Tag="MA" />
+                            <ComboBoxItem Content="MI" Tag="MI" />
+                            <ComboBoxItem Content="MN" Tag="MN" />
+                            <ComboBoxItem Content="MS" Tag="MS" />
+                            <ComboBoxItem Content="MO" Tag="MO" />
+                            <ComboBoxItem Content="MT" Tag="MT" />
+                            <ComboBoxItem Content="NE" Tag="NE" />
+                            <ComboBoxItem Content="NV" Tag="NV" />
+                            <ComboBoxItem Content="NH" Tag="NH" />
+                            <ComboBoxItem Content="NJ" Tag="NJ" />
+                            <ComboBoxItem Content="NM" Tag="NM" />
+                            <ComboBoxItem Content="NY" Tag="NY" />
+                            <ComboBoxItem Content="NC" Tag="NC" />
+                            <ComboBoxItem Content="ND" Tag="ND" />
+                            <ComboBoxItem Content="OH" Tag="OH" />
+                            <ComboBoxItem Content="OK" Tag="OK" />
+                            <ComboBoxItem Content="OR" Tag="OR" />
+                            <ComboBoxItem Content="PA" Tag="PA" />
+                            <ComboBoxItem Content="RI" Tag="RI" />
+                            <ComboBoxItem Content="SC" Tag="SC" />
+                            <ComboBoxItem Content="SD" Tag="SD" />
+                            <ComboBoxItem Content="TN" Tag="TN" />
+                            <ComboBoxItem Content="TX" Tag="TX" />
+                            <ComboBoxItem Content="UT" Tag="UT" />
+                            <ComboBoxItem Content="VT" Tag="VT" />
+                            <ComboBoxItem Content="VA" Tag="VA" />
+                            <ComboBoxItem Content="WA" Tag="WA" />
+                            <ComboBoxItem Content="WV" Tag="WV" />
+                            <ComboBoxItem Content="WI" Tag="WI" />
+                            <ComboBoxItem Content="WY" Tag="WY" />
+                        </ComboBox>
+                        <Button x:Name="VARStateCopy" IsEnabled="False">
+                            <iconPacks:PackIconFontAwesome Kind="CopyRegular" />
+                        </Button>
+                    </StackPanel>
+                    <vvc:VARTextBox x:Name="VARZip" Label="Zip Code" Watermark="00000" TabIndex="113"/>
+                    <vvc:VARTextBox x:Name="VARPhoneNumber" Label="Phone Number" Watermark="000-0000000" TabIndex="114"/>
+                    <vvc:VARTextBox x:Name="VARContactName" Label="Conntact Name" Watermark="Full Name" TabIndex="115"/>
+                    <!--<vvc:VARTextBox x:Name="VARTimeZoneV" Label="Time Zone" Watermark="Timezone" TabIndex="116"/>-->
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Label Content="Time Zone" HorizontalAlignment="Right" />
+                        <ComboBox mah:TextBoxHelper.Watermark="Timezone" x:Name="VARTimeZone" TabIndex="116" SelectedValuePath="Tag" Width="150">
+                            <ComboBoxItem Tag="Eastern" Content="Eastern" />
+                            <ComboBoxItem Tag="Central" Content="Central" />
+                            <ComboBoxItem Tag="Mountain" Content="Mountain" />
+                            <ComboBoxItem Tag="Pacific" Content="Pacific" />
+                        </ComboBox>
+                        <Button x:Name="VARTimeZoneCopy" IsEnabled="False">
+                            <iconPacks:PackIconFontAwesome Kind="CopyRegular" />
+                        </Button>
+                    </StackPanel>
+                    <vvc:VARTextBox x:Name="VARHCPOSID" Label="HC POS ID" Watermark="0000000000" TabIndex="117"/>
+                    <vvc:VARTextBox x:Name="VARAutoClose" Label="Auto Close Time" Watermark="0000" TabIndex="118"/>
+                    <vvc:VARTextBox x:Name="VARABA" Label="ABA Number" Watermark="0000000000000" TabIndex="119"/>
+                    <vvc:VARTextBox x:Name="VARFCSID" Label="EBT FCSID" Watermark="0000000" TabIndex="120"/>
+                    <vvc:VARTextBox x:Name="VARDebitGroups" Label="Debit Groups" Watermark="XXXXXX" TabIndex="121"/>
+                    <vvc:VARTextBox x:Name="VAREDCPrimary" Label="EDC Primary" Watermark="0000000000000" TabIndex="122"/>
+                    <vvc:VARTextBox x:Name="VAREDCSecondary" Label="EDC Secondary" Watermark="0000000000000" TabIndex="123"/>
+                    <vvc:VARTextBox x:Name="VARAuthPrimary" Label="Auth Primary" Watermark="0000000000000" TabIndex="124"/>
+                    <vvc:VARTextBox x:Name="VARAuthSecondary" Label="Auth Secondary" Watermark="0000000000000" TabIndex="125"/>
+                    <vvc:VARTextBox x:Name="VARSettlementAgent" Label="Settlement Agent" Watermark="V301" TabIndex="126"/>
+                    <vvc:VARTextBox x:Name="VARReimbursementAttribute" Label="Reimburs Attribute" Watermark="Z" TabIndex="127"/>
+                    <vvc:VARTextBox x:Name="VARAcceptedCards" Label="Accepted Cards" Watermark="Accepted Cards" Height="45" TabIndex="128"/>
+                    <vvc:VARTextBox x:Name="VARComments" Label="Comments" Watermark="Comments" Height="70" TabIndex="129"/>
+
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Column="1" Header="VAR Sheet">
+            <RichTextBox x:Name="VARRTF" VerticalScrollBarVisibility="Auto" IsReadOnly="True" SpellCheck.IsEnabled="False" />
+        </GroupBox>
+    </Grid>
+</mah:MetroWindow>
